@@ -1,0 +1,31 @@
+
+
+.gradient-background {
+  background: linear-gradient(to right, #7E60BF, #E4B1F0);
+  color: #FFE1FF;
+}
+
+
+.main .container > .row {
+  height: 80vh;
+}
+
+.queries {
+  background-color: bisque;
+  height: 40vh;
+}
+
+.statistics-text {
+  background-color: azure;
+  height: 40vh;
+}
+
+
+#map {
+  background-image: url("./assets/images/map.jpg");
+  height: 100%;
+}
+#statistics-graphs, #sth-else {
+  background-color: white;
+  height: 100%;
+}

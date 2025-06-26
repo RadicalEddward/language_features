@@ -1,0 +1,18 @@
+--------------------------------------------------
+| 🌍 Language Feature Explorer                    |
+|------------------------------------------------|
+| Feature 1: [dropdown]     Feature 2: [dropdown]|
+| Compare by: [dropdown: region/family/global]   |
+|------------------------------------------------|
+| [Optional Button] Compute Correlation          |
+|------------------------------------------------|
+| 📊 Visualization Panel                         |
+| (Bar Chart, Scatterplot, Map, etc.)            |
+|------------------------------------------------|
+| 📋 Summary Statistics                          |
+| - X is found in 30% of languages               |
+| - Correlation with Y: Cramér's V = 0.42        |
+| - p-value < 0.05                               |
+|------------------------------------------------|
+| 🌐 Footer: data source, about, GitHub link     |
+--------------------------------------------------
