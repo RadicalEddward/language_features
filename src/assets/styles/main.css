@@ -19,7 +19,11 @@
 
 .queries {
   background-color: bisque;
-  height: 40vh;
+  height: 30vh;
+}
+
+.correlate-btn {
+  height: 10vh;
 }
 
 .statistics-text {
@@ -29,7 +33,7 @@
 
 
 #map {
-  background-image: url("./assets/images/map.jpg");
+  background-image: url("../images/map.jpg");
   height: 100%;
 }
 #statistics-graphs, #top-correlations {

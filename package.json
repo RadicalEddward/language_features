@@ -1,0 +1,23 @@
+{
+  "name": "language_features",
+  "version": "1.0.0",
+  "description": "personal project about correlation between linguistic features",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RadicalEddward/language_features.git"
+  },
+  "author": "Lukas Daporta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RadicalEddward/language_features/issues"
+  },
+  "homepage": "https://github.com/RadicalEddward/language_features#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
