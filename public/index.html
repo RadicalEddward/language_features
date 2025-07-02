@@ -54,33 +54,35 @@
         <!-- left side with selection of features and statistics-->
         <div class="left-side col-4">
           <!-- Selection of features -->
-          <div class="row">
-            <div class="queries col-md-6 py-4">
-              <!-- dropdown select features -->
-              <label for="feature-select">Select the first feature:</label><br>
-              <select class="mt-2" name="lang-feature" id="feature-select">
-                <option value="">--Please pick an option--</option>
-                <option value="tonal">tonal</option>
-                <option value="morphology">morphology</option>
-                <option value="word-order">word order</option>
-              </select>
+          <form action="/submit" method="post">
+            <div class="row">
+              <div class="queries col-md-6 py-4">
+                <!-- dropdown select features -->
+                <label for="feature-1-select">Select the first feature:</label><br>
+                <select class="mt-2" name="lang-feature-1" id="feature-1-select">
+                  <option value="">--Please pick an option--</option>
+                  <option value="tonal">tonal</option>
+                  <option value="morphology">morphology</option>
+                  <option value="word-order">word order</option>
+                </select>
+              </div>
+              <div class="queries col-md-6 py-4">
+                <!-- dropdown select features -->
+                <label for="feature-2-select">Select the second feature:</label><br>
+                <select class="mt-2" name="lang-feature-2" id="feature-2-select">
+                  <option value="">--Please pick an option--</option>
+                  <option value="tonal">tonal</option>
+                  <option value="morphology">morphology</option>
+                  <option value="word-order">word order</option>
+                </select>
+              </div>
             </div>
-            <div class="queries col-md-6 py-4">
-              <!-- dropdown select features -->
-              <label for="feature-select">Select the second feature:</label><br>
-              <select class="mt-2" name="lang-feature" id="feature-select">
-                <option value="">--Please pick an option--</option>
-                <option value="tonal">tonal</option>
-                <option value="morphology">morphology</option>
-                <option value="word-order">word order</option>
-              </select>
+            <div class="row correlate-btn">
+              <input type="submit" value="Show correlation"></input>
             </div>
-          </div>
-          <div class="row correlate-btn">
-              <button>Show correlation</button>
-            </div>
+          </form>
           <!-- statistics displayed -->
-          <div class="row statistics-text p-5"> 
+          <div class="row statistics-text p-5">
             <h3>Summary statistics</h3>
             <ul>
               <li>Feature 1 is found in 20% of languages</li>
@@ -98,12 +100,13 @@
                 role="tab" aria-controls="map" aria-selected="true">Map</button>
             </li>
             <li class="nav-item" role="presentation">
-              <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#statistics-graphs" type="button"
-                role="tab" aria-controls="statistics-graphs" aria-selected="false">Statistics</button>
+              <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#statistics-graphs"
+                type="button" role="tab" aria-controls="statistics-graphs" aria-selected="false">Statistics</button>
             </li>
             <li class="nav-item" role="presentation">
-              <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#top-correlations" type="button"
-                role="tab" aria-controls="top-correlations" aria-selected="false">top correlations</button>
+              <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#top-correlations"
+                type="button" role="tab" aria-controls="top-correlations" aria-selected="false">top
+                correlations</button>
             </li>
           </ul>
           <div class="tab-content" id="map">
