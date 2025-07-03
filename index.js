@@ -50,26 +50,60 @@ app.post("/discussion", (req, res) => {
   });
 })
 
-// delete post route
+// delete and edit post route
 app.delete("/discussion", (req, res) => {
-  console.log("Delete post request received");
-  // const postId = parseInt(req.params.id, 10);
-  const postId = Object.keys(req.body)[0].at(-1); // Get the post ID from the request body
-  console.log(Object.keys(req.body)[0].at(-1));
+  console.log("Delete/edit post request received");
+  const typeOfRequest = Object.keys(req.body)[0].at(0); // Get the type of request ('e' edit or 'd' delete)
 
-  posts.splice(postId, 1, null); // Remove the post from the array
-  console.log(`Post with ID ${postId} deleted`);
-  console.log(posts);
-  // res.redirect("/discussion");
-  res.render("discussion.ejs", {
-    message: "Post deleted successfully!",
-    posts: posts,
-  });
+  
+  const postId = Object.keys(req.body)[0].at(-1); // Get the post ID from the request body
+
+  // if (typeOfRequest === "e") {
+  //   const postToEdit = req.body[postId];
+  //   console.log("req.body inside if:", req.body)
+  //   console.log("Editing post:", postToEdit);
+  // }
+  const postToEdit = posts.splice(postId, 1, null); // Remove the post from the array
+  console.log("Post to edit:", postToEdit[0]);
+
+  if (typeOfRequest === "e") {
+    console.log("Edit post request received");
+    res.render("discussion.ejs", {
+      message: "Please edit your original post!",
+      posts: posts,
+      edit: true,
+      postToEdit: postToEdit[0], // pass the post to edit
+    });
+    
+  } else if (typeOfRequest === "d") {
+    console.log("Delete post request received");
+    res.render("discussion.ejs", {
+      message: "Post deleted successfully!",
+      posts: posts,
+    });
+  }
+
+  // res.render("discussion.ejs", {
+  //   message: "Post deleted successfully!",
+  //   posts: posts,
+  // })
+
 })
 
-
 // edit post route
+// app.delete("/discussion", (req, res) => {
+//   console.log("Edit post request received");
+//   const postId = Object.keys(req.body)[0].at(-1); // Get the post ID from the request body
 
+//   posts.splice(postId, 1, null); // Remove the post from the array
+
+//   // res.redirect("/discussion");
+//   res.render("discussion.ejs", {
+//     message: "Post deleted successfully!",
+//     posts: posts,
+//     edit: true
+//   });
+// })
 
 
 
