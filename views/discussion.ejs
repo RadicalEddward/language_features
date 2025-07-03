@@ -1,0 +1,48 @@
+<%- include("partials/header.ejs") %>
+
+
+  <section class="discussion">
+    <div class="container mt-3">
+      <h1>Discussion forum</h1>
+      <p>Here there will be an opportunity to make posts and have discussions.</p>
+
+      <!-- Make a post -->
+      <form class="mt-4" action="/discussion" method="post">
+        <div class="row">
+          <div class="col-md-6">
+            <input type="text" class="form-control mb-2" name="post-title" placeholder="Post title" required>
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control mb-2" name="post-username" placeholder="Your username" required>
+          </div>
+        </div>
+        <textarea class="form-control mb-2" rows="4" name="post-text" placeholder="Write your post here..." required></textarea>
+        <button type="submit" class="btn btn-primary">Submit Post</button>
+      </form>
+
+
+      <% if (locals.message) { %>
+        <div class="alert alert-success mt-3">
+          <%= message %>
+        </div>
+        <% posts.forEach((post) => { %>
+          <% if (post) { %>
+            <div class="post mt-5" id="post-<%= post.id %>">
+              <h2><%= post["post-title"] %></h2>
+              <p>Posted by <strong><%= post["post-username"] %></strong> on <em>2023-10-01</em></p> 
+              <p><%= post["post-text"] %></p>
+
+              <button type="submit" class="btn btn-success btn-edit" name="edit-post">Edit post</button>
+
+              <form action="/discussion?_method=DELETE" method="post"><button type="submit" class="btn btn-danger btn-delete" name="delete-post-<%= post.id %>">Delete post</button></form>
+            </div>
+          <% } %>
+ 
+        <% }) %>
+      <% } %>
+
+
+    </div>
+
+
+    <%- include("partials/footer.ejs") %>

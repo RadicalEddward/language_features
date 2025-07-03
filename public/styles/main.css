@@ -33,7 +33,7 @@
 
 
 #map {
-  background-image: url("./images/map.jpg");
+  background-image: url("../images/map.jpg");
   height: 100%;
 }
 #statistics-graphs, #top-correlations {
