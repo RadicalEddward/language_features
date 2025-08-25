@@ -1,0 +1,4 @@
+  try {
+    items = (await db.query("SELECT * FROM todos ORDER BY id ASC")).rows
+  } catch (err) {
+    console.log(err

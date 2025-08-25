@@ -1,17 +1,44 @@
 import express from "express";
 import bodyParser from "body-parser";
 import methodOverride from "method-override";
+import dotenv from "dotenv";
+import pg from "pg";
+
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+dotenv.config();
+
+
+const db = new pg.Client({
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
+})
+db.connect();
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
+
+
 // get routes for page naivigation
-app.get("/", (req, res) => {
-  res.render("index.ejs");
+app.get("/", async (req, res) => {
+  let parameters = [];
+  try {
+     let result = await db.query('SELECT "ID", "Name" FROM parameters ORDER BY "Basic_category", "Subcategory"');
+     parameters = result.rows;
+  } catch (err) {
+    console.log(err);
+  }
+  
+
+  res.render("index.ejs", {
+    parameters
+  });
 })
 
 app.get("/about", (req, res) => {
@@ -58,13 +85,7 @@ app.delete("/discussion", (req, res) => {
   
   const postId = Object.keys(req.body)[0].at(-1); // Get the post ID from the request body
 
-  // if (typeOfRequest === "e") {
-  //   const postToEdit = req.body[postId];
-  //   console.log("req.body inside if:", req.body)
-  //   console.log("Editing post:", postToEdit);
-  // }
   const postToEdit = posts.splice(postId, 1, null); // Remove the post from the array
-  console.log("Post to edit:", postToEdit[0]);
 
   if (typeOfRequest === "e") {
     console.log("Edit post request received");
@@ -83,30 +104,7 @@ app.delete("/discussion", (req, res) => {
     });
   }
 
-  // res.render("discussion.ejs", {
-  //   message: "Post deleted successfully!",
-  //   posts: posts,
-  // })
-
 })
-
-// edit post route
-// app.delete("/discussion", (req, res) => {
-//   console.log("Edit post request received");
-//   const postId = Object.keys(req.body)[0].at(-1); // Get the post ID from the request body
-
-//   posts.splice(postId, 1, null); // Remove the post from the array
-
-//   // res.redirect("/discussion");
-//   res.render("discussion.ejs", {
-//     message: "Post deleted successfully!",
-//     posts: posts,
-//     edit: true
-//   });
-// })
-
-
-
 
 
 app.listen(port, () => {
